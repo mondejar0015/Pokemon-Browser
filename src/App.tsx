@@ -19,7 +19,7 @@ function AppContent() {
 
   // Fetch initial Pokemon list
   const pokemonListState = useFetch<PokemonListResponse>(
-    'https://pokeapi.co/api/v2/pokemon?limit=151'
+    'https://pokeapi.co/api/v2/pokemon?limit=2000'
   )
 
   // Fetch detailed Pokemon data after initial list is loaded
