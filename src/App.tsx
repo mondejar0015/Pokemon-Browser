@@ -37,7 +37,7 @@ function AppContent() {
           setIsLoadingDetails(false)
         })
     }
-  }, [pokemonListState.data])
+  }, [pokemonListState.status, pokemonListState])
 
   // Filter Pokemon based on search term
   const filteredPokemon = useMemo(() => {
