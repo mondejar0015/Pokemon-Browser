@@ -1,0 +1,28 @@
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  border-color: #646cff;
+}
+
+.app.dark-mode .card {
+  background-color: #2a2a2a;
+  border-color: #404040;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.app.dark-mode .card:hover {
+  background-color: #333333;
+  border-color: #8b9cff;
+  box-shadow: 0 8px 16px rgba(100, 108, 255, 0.2);
+}
+

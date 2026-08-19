@@ -1,0 +1,256 @@
+.pokemon-card {
+  text-align: center;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.pokemon-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #646cff, #535bf2);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.pokemon-card:hover::before {
+  transform: scaleX(1);
+}
+
+.pokemon-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  padding-bottom: 1rem;
+}
+
+.pokemon-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.pokemon-card:hover .pokemon-image {
+  transform: scale(1.05);
+}
+
+.pokemon-name {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.pokemon-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pokemon-id {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.app.dark-mode .pokemon-id {
+  color: #aaa;
+}
+
+.pokemon-type {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.pokemon-type-badge-normal {
+  background-color: #a8a878;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-fire {
+  background-color: #f08030;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-water {
+  background-color: #6890f0;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-grass {
+  background-color: #78c850;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-electric {
+  background-color: #f8d030;
+  color: black;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-ice {
+  background-color: #98d8d8;
+  color: black;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-fighting {
+  background-color: #c03028;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-poison {
+  background-color: #a040a0;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-ground {
+  background-color: #e0c068;
+  color: black;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-flying {
+  background-color: #a890f0;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-psychic {
+  background-color: #f85888;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-bug {
+  background-color: #a8b820;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-rock {
+  background-color: #b8a038;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-ghost {
+  background-color: #705898;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-dragon {
+  background-color: #7038f8;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-dark {
+  background-color: #705848;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-steel {
+  background-color: #b8b8d0;
+  color: black;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-type-badge-fairy {
+  background-color: #ee99ac;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.pokemon-stats {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  font-size: 0.9rem;
+  justify-content: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-weight: 600;
+}
+
+.view-details-btn {
+  margin-top: auto;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #646cff, #535bf2);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(100, 108, 255, 0.3);
+}
+
+.view-details-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.4);
+}
+
+.view-details-btn:active {
+  transform: translateY(0);
+}
+
+.app.dark-mode .stat-label {
+  color: #aaa;
+}
+
