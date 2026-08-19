@@ -5,11 +5,13 @@ import { SearchBar } from './components/SearchBar'
 import { ItemList } from './components/ItemList'
 import { PokemonCard } from './components/PokemonCard'
 import { PokemonDetail } from './components/PokemonDetail'
+import { TypeFilter } from './components/TypeFilter'
 import { ThemeProvider, useTheme } from './contexts/ThemeContext'
 import './App.css'
 
 function AppContent() {
   const [searchTerm, setSearchTerm] = useState<string>('')
+  const [selectedType, setSelectedType] = useState<string | null>(null)
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([])
   const [isLoadingDetails, setIsLoadingDetails] = useState<boolean>(false)
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null)
@@ -39,13 +41,37 @@ function AppContent() {
     }
   }, [pokemonListState.status])
 
-  // Filter Pokemon based on search term
+  // Extract unique types from Pokemon
+  const allTypes = useMemo(() => {
+    const types = new Set<string>()
+    pokemonList.forEach((pokemon) => {
+      pokemon.types.forEach((t) => {
+        types.add(t.type.name)
+      })
+    })
+    return Array.from(types).sort()
+  }, [pokemonList])
+
+  // Filter Pokemon based on search term and type
   const filteredPokemon = useMemo(() => {
-    if (!searchTerm.trim()) return pokemonList
-    return pokemonList.filter((pokemon: Pokemon) =>
-      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  }, [pokemonList, searchTerm])
+    let result = pokemonList
+
+    // Filter by type
+    if (selectedType) {
+      result = result.filter((pokemon) =>
+        pokemon.types.some((t) => t.type.name === selectedType)
+      )
+    }
+
+    // Filter by search term
+    if (searchTerm.trim()) {
+      result = result.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    }
+
+    return result
+  }, [pokemonList, searchTerm, selectedType])
 
   const isLoading = pokemonListState.status === 'loading' || isLoadingDetails
   const isError = pokemonListState.status === 'error'
@@ -65,6 +91,14 @@ function AppContent() {
           onChange={setSearchTerm}
           placeholder="Search Pokémon by name..."
         />
+
+        {pokemonListState.status === 'success' && pokemonList.length > 0 && (
+          <TypeFilter
+            types={allTypes}
+            selectedType={selectedType}
+            onTypeSelect={setSelectedType}
+          />
+        )}
 
         {isLoading && <div className="loading">Loading Pokémon...</div>}
 

@@ -145,6 +145,31 @@
   margin-bottom: 0;
 }
 
+.description-section {
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.1) 0%, rgba(83, 91, 242, 0.05) 100%);
+  border-left: 4px solid #646cff;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.app.dark-mode .description-section {
+  background: linear-gradient(135deg, rgba(139, 156, 255, 0.15) 0%, rgba(100, 108, 255, 0.08) 100%);
+  border-left-color: #8b9cff;
+}
+
+.detail-description {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+  font-weight: 500;
+}
+
+.app.dark-mode .detail-description {
+  color: #ddd;
+}
+
 .detail-section h3 {
   margin: 0 0 1rem 0;
   font-size: 1.1rem;

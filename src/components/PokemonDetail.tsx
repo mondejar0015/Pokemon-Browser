@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react'
 import { Pokemon } from '../types/api'
+import { fetchPokemonDescription } from '../utils/pokemonUtils'
 import './PokemonDetail.css'
 
 interface PokemonDetailProps {
@@ -7,7 +9,14 @@ interface PokemonDetailProps {
 }
 
 export function PokemonDetail({ pokemon, onClose }: PokemonDetailProps) {
+  const [description, setDescription] = useState<string>(pokemon.description || '')
   const primaryType = pokemon.types[0]?.type.name || 'unknown'
+
+  useEffect(() => {
+    if (!description) {
+      fetchPokemonDescription(pokemon.name).then(setDescription)
+    }
+  }, [pokemon.name, description])
 
   return (
     <div className="pokemon-detail-overlay" onClick={onClose}>
@@ -36,6 +45,12 @@ export function PokemonDetail({ pokemon, onClose }: PokemonDetailProps) {
         </div>
 
         <div className="detail-content">
+          {description && (
+            <section className="detail-section description-section">
+              <p className="detail-description">{description}</p>
+            </section>
+          )}
+
           <section className="detail-section">
             <h3>Basic Info</h3>
             <div className="detail-grid">

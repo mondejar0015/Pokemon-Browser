@@ -19,6 +19,7 @@ export interface Pokemon {
   weight: number
   base_experience: number
   is_main_series: boolean
+  description?: string
   sprites: {
     front_default: string | null
     front_shiny: string | null
